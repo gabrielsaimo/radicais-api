@@ -1,6 +1,5 @@
-/* eslint-disable prettier/prettier */
 import { Controller, Get } from '@nestjs/common';
-import { NotificationsGateway } from '../../web-socket/notifications.gateway'; // Importe o controlador WebSocket
+import { NotificationsGateway } from './notifications.gateway'; // Importe o controlador WebSocket
 
 @Controller('notifications')
 export class NotificationsController {
