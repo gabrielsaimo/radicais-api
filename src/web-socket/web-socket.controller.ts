@@ -1,18 +1,14 @@
-import { Controller, Get } from '@nestjs/common';
-import { NotificationsGateway } from './notifications.gateway'; // Importe o controlador WebSocket
+import { Controller, Post, Body } from '@nestjs/common';
+import { NotificationsGateway } from './notifications.gateway';
 
 @Controller('notifications')
 export class NotificationsController {
-  constructor(private readonly notificationsGateway: NotificationsGateway) {} // Injete o controlador WebSocket
+  constructor(private readonly notificationsGateway: NotificationsGateway) {}
 
-  @Get('send')
-  sendNotification() {
-    try {
-      const notification = { message: 'Nova notificação' }; // Defina a notificação que deseja enviar
-      this.notificationsGateway.handleNotification(notification); // Chame o método handleNotification do controlador WebSocket
-      return 'Notificação enviada';
-    } catch (error) {
-      console.log(error);
-    }
+  @Post('send')
+  sendNotification(@Body() body: any) {
+    const notification = body;
+    this.notificationsGateway.handleNotification(notification);
+    return { message: 'Notificação enviada com sucesso' };
   }
 }
