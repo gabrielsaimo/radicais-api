@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build" # Comando de build do seu projeto (por exemplo, npm run build)
+  publish = "dist" # Pasta onde o build será gerado (por exemplo, dist)
+
+[[redirects]]
+  from = "/*"
+  to = "/src/main.ts"
+  status = 200
+  force = true
